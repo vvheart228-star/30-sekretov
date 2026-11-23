@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport"/>
+<meta name="robots" content="noindex,nofollow,noarchive"/>
+<meta content="#fbf7f3" name="theme-color"/>
+<meta content="light" name="color-scheme"/>
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<meta content="default" name="apple-mobile-web-app-status-bar-style"/>
+<meta content="30 секретов" name="apple-mobile-web-app-title"/>
+<link href="manifest.webmanifest" rel="manifest"/>
+<link href="assets/quest-icon.svg" rel="apple-touch-icon"/>
+<meta content="Личный квест-сюрприз из тридцати романтических загадок" name="description"/>
+<title>30 секретов для тебя ♡</title>
+<link href="style.css" rel="stylesheet"/>
+<link href="iphone.css" rel="stylesheet"/></head>
+<body class="app-body">
+<div class="app-shell">
+<div aria-hidden="true" class="floral floral-top"></div>
+<div aria-hidden="true" class="floral floral-bottom"></div>
+<header class="app-header">
+<div class="brand-mini">
+<div class="brand-mark"><img alt="" class="brand-logo" src="assets/flower-mark.svg"/></div>
+<div>
+<div class="brand-caption">МОЙ МАЛЕНЬКИЙ СЕКРЕТ</div>
+<h1 id="headerTitle">30 секретов для тебя</h1>
+</div>
+</div>
+<button class="current-step-pill" id="headerCurrentBtn" type="button">
+<span>Этап</span>
+<strong id="headerComplete">1/30</strong>
+</button>
+</header>
+<main class="app-main" id="appMain">
+<section class="screen active" data-screen="home" id="screen-home">
+<div class="hero-card soft-card">
+<div class="cover-card-head"><span class="cover-label">Только для тебя</span><span aria-hidden="true" class="cover-ornament">✦ ♡ ✦</span></div>
+<div aria-hidden="true" class="hero-art-wrap"><div class="hero-halo"></div><img alt="" class="hero-bouquet" src="assets/tulip-bouquet.svg"/><span class="floating-sparkle sparkle-one">✧</span><span class="floating-sparkle sparkle-two">✦</span><span class="floating-sparkle sparkle-three">✧</span></div>
+<div class="hero-copy"><div class="hero-badge">НАША МАЛЕНЬКАЯ ИСТОРИЯ</div><h2 id="siteTitle">30 секретов <em>для тебя</em></h2><p class="hero-subtitle" id="siteSubtitle"></p><p class="hero-text" id="welcomeText"></p><button class="primary-btn" id="startBtn" type="button">Начать приключение <span aria-hidden="true">→</span></button><button class="letter-link" id="readLetterBtn" type="button">Прочитать письмо целиком <span>↗</span></button><div class="demo-note" hidden="" id="demoWarning"></div></div>
+</div>
+<div class="summary-grid">
+<article class="soft-card summary-card">
+<div class="summary-top"><span>Пройдено</span><strong id="completeBig">00</strong></div>
+<div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+<div class="summary-caption"><span id="progressPct">0%</span> пути к сюрпризу</div>
+</article>
+<article class="soft-card summary-card danger-card">
+<div class="summary-top"><span>Лишние шаги</span><strong id="detourCount">0</strong></div>
+<p>Ошибки не мешают пройти квест, но уводят немного дальше от подарка.</p>
+</article>
+</div>
+<article class="next-card soft-card" id="nextChallenge"></article>
+</section>
+<section class="screen" data-screen="quests" id="screen-quests">
+<div class="screen-head">
+<div>
+<div class="mini-label">Загадки</div>
+<h2>30 маленьких тайн</h2>
+</div>
+<button class="ghost-btn" id="jumpCurrentBtn" type="button">К текущей</button>
+</div>
+<div class="soft-card current-quest-card" id="currentQuestCard"></div>
+<div aria-label="Главы квеста" class="chapter-picker" id="chapterPicker" role="tablist"></div>
+<div class="chapter-content" id="chapterContent"></div>
+</section>
+<section class="screen" data-screen="clues" id="screen-clues">
+<div class="screen-head">
+<div>
+<div class="mini-label">Буквы</div>
+<h2>Собираем тайную фразу</h2>
+</div>
+</div>
+<div class="soft-card info-card">
+          Собирай буквы за правильные ответы. Одна награда — это пробел. К 29-й загадке у тебя будут все 12 символов.
+        </div>
+<div class="stack-grid" id="clueGrid"></div>
+</section>
+
+<section class="screen" data-screen="path" id="screen-path">
+<div class="screen-head">
+<div>
+<div class="mini-label">Путь</div>
+<h2>Дорога к подарку</h2>
+</div>
+</div>
+<article class="soft-card route-card">
+<div class="route-top">
+<div>
+<span>Общий прогресс</span>
+<strong id="completeSmall">0 из 30</strong>
+</div>
+<div class="route-percent" id="routePercent">0%</div>
+</div>
+<div class="progress-track large"><div class="progress-fill" id="progressFillPath"></div></div>
+<div class="detour-visual">
+<div class="detour-line"><span class="detour-marker" id="detourMarker">♡</span><span class="detour-gift">🎁</span></div>
+<div class="detour-legend"><span>чем больше ошибок, тем длиннее путь</span><span>подарок ждёт в финале</span></div>
+</div>
+</article>
+<article class="soft-card" id="endingCard"><div aria-hidden="true" class="ending-art"><img alt="" src="assets/tulip-bouquet.svg"/></div>
+<div class="mini-label">Финал</div>
+<h3 id="endingHeadline">Финальный сюрприз ещё впереди</h3>
+<p id="finalMessage"></p>
+</article>
+<details class="reset-details"><summary>Настройки и повторное прохождение</summary><p>Если ты проверяешь квест, здесь можно очистить весь сохранённый прогресс на этом устройстве.</p><button class="reset-control" id="resetBtn" type="button">Начать всё сначала</button></details></section>
+</main>
+<nav aria-label="Основная навигация" class="tabbar" role="tablist">
+<button aria-selected="true" class="tabbar-item active" data-tab="home" role="tab" type="button"><span class="tab-icon"><svg aria-hidden="true" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="24"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"></path></svg></span><span>Главная</span></button>
+<button aria-selected="false" class="tabbar-item" data-tab="quests" role="tab" type="button"><span class="tab-icon"><svg aria-hidden="true" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="24"><rect height="18" rx="4" width="18" x="3" y="3"></rect><path d="m9 8 3-2 3 2M8.5 13h7m-7 4h4"></path></svg></span><span>Загадки</span></button>
+<button aria-selected="false" class="tabbar-item" data-tab="clues" role="tab" type="button"><span class="tab-icon"><svg aria-hidden="true" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="24"><path d="M4 5h16v14H4z"></path><path d="m4 6 8 7 8-7"></path></svg></span><span>Буквы</span></button>
+
+<button aria-selected="false" class="tabbar-item" data-tab="path" role="tab" type="button"><span class="tab-icon"><svg aria-hidden="true" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="24"><path d="M20.4 4.6a5.5 5.5 0 0 0-7.8 0L12 5.2l-.6-.6a5.5 5.5 0 0 0-7.8 7.8L12 21l8.4-8.6a5.5 5.5 0 0 0 0-7.8z"></path></svg></span><span>Путь</span></button>
+</nav>
+</div>
+<div class="modal-root" hidden="" id="modal">
+<div class="modal-backdrop" id="modalBackdrop"></div>
+<section aria-labelledby="modalTitle" aria-modal="true" class="modal-panel" id="modalPanel" role="dialog">
+<button aria-label="Закрыть" class="close-btn" id="modalClose">×</button>
+<div id="modalContent"></div>
+</section>
+</div>
+<div aria-hidden="true" class="confetti-layer" id="confettiLayer"></div>
+<script src="quest-data.js"></script>
+<script src="game.js"></script>
+</body>
+</html>
