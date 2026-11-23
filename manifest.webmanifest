@@ -1,0 +1,20 @@
+{
+  "name": "30 секретов для тебя",
+  "short_name": "30 секретов",
+  "description": "Романтический домашний квест из 30 загадок",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#fbf7f3",
+  "theme_color": "#f5e9e7",
+  "lang": "ru",
+  "icons": [
+    {
+      "src": "flower.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
