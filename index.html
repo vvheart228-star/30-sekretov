@@ -1,128 +1,108 @@
 <!DOCTYPE html>
-
-<html lang="ru">
-<head>
-<meta charset="utf-8"/>
-<meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport"/>
-<meta name="robots" content="noindex,nofollow,noarchive"/>
-<meta content="#fbf7f3" name="theme-color"/>
-<meta content="light" name="color-scheme"/>
-<meta content="yes" name="apple-mobile-web-app-capable"/>
-<meta content="default" name="apple-mobile-web-app-status-bar-style"/>
-<meta content="30 секретов" name="apple-mobile-web-app-title"/>
-<link href="manifest.webmanifest" rel="manifest"/>
-<link href="assets/quest-icon.svg" rel="apple-touch-icon"/>
-<meta content="Личный квест-сюрприз из тридцати романтических загадок" name="description"/>
-<title>30 секретов для тебя ♡</title>
-<link href="style.css" rel="stylesheet"/>
-<link href="iphone.css" rel="stylesheet"/></head>
-<body class="app-body">
-<div class="app-shell">
-<div aria-hidden="true" class="floral floral-top"></div>
-<div aria-hidden="true" class="floral floral-bottom"></div>
-<header class="app-header">
-<div class="brand-mini">
-<div class="brand-mark"><img alt="" class="brand-logo" src="assets/flower-mark.svg"/></div>
-<div>
-<div class="brand-caption">МОЙ МАЛЕНЬКИЙ СЕКРЕТ</div>
-<h1 id="headerTitle">30 секретов для тебя</h1>
-</div>
-</div>
-<button class="current-step-pill" id="headerCurrentBtn" type="button">
-<span>Этап</span>
-<strong id="headerComplete">1/30</strong>
-</button>
-</header>
-<main class="app-main" id="appMain">
-<section class="screen active" data-screen="home" id="screen-home">
-<div class="hero-card soft-card">
-<div class="cover-card-head"><span class="cover-label">Только для тебя</span><span aria-hidden="true" class="cover-ornament">✦ ♡ ✦</span></div>
-<div aria-hidden="true" class="hero-art-wrap"><div class="hero-halo"></div><img alt="" class="hero-bouquet" src="assets/tulip-bouquet.svg"/><span class="floating-sparkle sparkle-one">✧</span><span class="floating-sparkle sparkle-two">✦</span><span class="floating-sparkle sparkle-three">✧</span></div>
-<div class="hero-copy"><div class="hero-badge">НАША МАЛЕНЬКАЯ ИСТОРИЯ</div><h2 id="siteTitle">30 секретов <em>для тебя</em></h2><p class="hero-subtitle" id="siteSubtitle"></p><p class="hero-text" id="welcomeText"></p><button class="primary-btn" id="startBtn" type="button">Начать приключение <span aria-hidden="true">→</span></button><button class="letter-link" id="readLetterBtn" type="button">Прочитать письмо целиком <span>↗</span></button><div class="demo-note" hidden="" id="demoWarning"></div></div>
-</div>
-<div class="summary-grid">
-<article class="soft-card summary-card">
-<div class="summary-top"><span>Пройдено</span><strong id="completeBig">00</strong></div>
-<div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
-<div class="summary-caption"><span id="progressPct">0%</span> пути к сюрпризу</div>
-</article>
-<article class="soft-card summary-card danger-card">
-<div class="summary-top"><span>Лишние шаги</span><strong id="detourCount">0</strong></div>
-<p>Ошибки не мешают пройти квест, но уводят немного дальше от подарка.</p>
-</article>
-</div>
-<article class="next-card soft-card" id="nextChallenge"></article>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f5e9e7"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="apple-mobile-web-app-title" content="30 секретов"><meta name="description" content="Личный квест-сюрприз из 30 загадок"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" href="./flower.svg" type="image/svg+xml"><title>30 секретов для тебя ♡</title>
+<style>
+:root{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#60414a;background:#fbf7f3;--pink:#d77f97;--rose:#b95e7b;--light:#fffaf8;--border:#ecd8d7;--green:#718d74}*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden}body{background:linear-gradient(160deg,#f9f3f0,#f4e4e7 54%,#eef1e7);-webkit-tap-highlight-color:transparent}button,input{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible{outline:3px solid #da91ad;outline-offset:2px}.app{height:100dvh;display:flex;flex-direction:column;position:relative;overflow:hidden;max-width:600px;margin:auto;background:radial-gradient(circle at top right,#f9e5e6,transparent 50%)}.head{flex:0 0 auto;min-height:78px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:calc(10px + env(safe-area-inset-top)) 19px 10px}.brand{display:flex;gap:10px;align-items:center}.brand-logo{width:46px;height:46px;border-radius:16px;background:#fff5f4;display:grid;place-items:center;box-shadow:0 5px 20px #bc8c9333;font-size:27px}.brand small{display:block;letter-spacing:2px;font-size:9px;color:#ac7b89;font-weight:800}.brand strong{display:block;font-family:Georgia,serif;font-size:18px}.head-status{border:1px solid #f0d7d9;background:#fffaf8;border-radius:18px;padding:10px;color:var(--rose);font-size:12px;font-weight:800;white-space:nowrap}.pages{flex:1;min-height:0;position:relative}.page{position:absolute;inset:0;padding:10px 17px 25px;overflow-y:auto;overscroll-behavior:contain;display:none;scrollbar-width:none}.page.active{display:block;animation:fade .22s ease}.page::-webkit-scrollbar{display:none}.nav{flex:0 0 auto;min-height:76px;padding:8px 9px calc(8px + env(safe-area-inset-bottom));border-top:1px solid #edced5;background:#fffaf8e9;backdrop-filter:blur(15px);display:grid;grid-template-columns:repeat(4,1fr);gap:5px}.nav button{border:0;background:transparent;color:#9e7c83;border-radius:16px;font-size:11px;font-weight:700;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:4px}.nav button.active{background:#f7e6e9;color:#b65b79}.nav-icon{font-size:24px;line-height:1}.card{background:#fffaf8e8;border:1px solid #f0d9dd;border-radius:25px;box-shadow:0 10px 30px #bd969324;padding:20px;margin-bottom:14px}.eyebrow{color:var(--rose);letter-spacing:2px;font-size:10px;font-weight:900;text-transform:uppercase}.hero{position:relative;overflow:hidden;padding:24px 21px 22px;background:linear-gradient(160deg,#fff9f6,#f9e8e8)}.hero-flowers{height:185px;margin:2px auto 12px;display:block;width:100%;max-width:320px;filter:drop-shadow(0 12px 12px #b5888a33)}h1,h2,h3{font-family:Georgia,serif;letter-spacing:-.5px}h1{font-size:39px;line-height:1.04;margin:15px 0 10px;font-weight:500}h1 em{color:var(--rose);font-weight:500}h2{font-size:28px;margin:7px 0 14px;font-weight:500}h3{font-size:23px;margin:8px 0 12px;font-weight:500}.lead{font-size:15px;line-height:1.65;color:#93717b;margin:7px 0 0}.btn{border:0;border-radius:15px;min-height:52px;padding:12px 20px;font-weight:800;color:#fff;background:linear-gradient(115deg,#e49bac,#c87491);width:100%;margin-top:17px;box-shadow:0 6px 15px #bd718529}.btn:active{transform:scale(.99)}.btn.secondary{background:#f5e6e8;color:#aa617c;box-shadow:none}.progress{height:9px;background:#f0d6dc;border-radius:999px;overflow:hidden;margin:13px 0}.fill{height:100%;background:linear-gradient(90deg,#de8da5,#eabb96);width:0;transition:width .25s}.small{font-size:12px;color:#96717e}.stats{display:grid;grid-template-columns:1fr 1fr;gap:12px}.stat{padding:17px}.stat strong{display:block;font-size:27px;color:var(--rose);font-family:Georgia,serif}.stat span{font-size:12px;color:#8b6e76}.heading{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:6px 0 14px}.tag{background:#f4e4e8;color:#ba6c85;border-radius:13px;padding:9px 11px;font-size:12px;font-weight:800;white-space:nowrap}.chapter-tabs{display:flex;gap:9px;overflow:auto;padding-bottom:15px;scrollbar-width:none}.chapter-tabs button{min-width:125px;border:1px solid #efcfd4;border-radius:15px;padding:13px;background:#fffaf8;color:#a06b7e;text-align:left;font-size:12px;font-weight:800}.chapter-tabs button.active{background:#f6dce3;color:#9c4868}.chapter-tabs small{display:block;font-size:9px;letter-spacing:1px;margin-bottom:4px}.tile-grid{display:grid;grid-template-columns:1fr 1fr;gap:11px}.tile{min-height:119px;text-align:left;display:flex;flex-direction:column;justify-content:space-between;background:#fffaf8;border:1px solid #ebd7d9;border-radius:20px;padding:15px;color:#614753}.tile .num{font:500 30px Georgia,serif;color:#b78191}.tile .label{font-size:13px;font-weight:800}.tile .hint{font-size:11px;color:#967b82;margin-top:3px}.tile.locked{opacity:.55}.tile.current{border:2px solid #d783a0;background:#fff2f3}.tile.done{border-color:#a8c3ad;background:#f4faf3}.tiles-label{margin:9px 0 13px}.letters{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:7px;margin-top:15px}.letter{height:60px;border-radius:13px;background:#f4e7e7;border:1px solid #e8c8d0;display:flex;align-items:center;justify-content:center;flex-direction:column;font-size:23px;font-weight:900;color:#aa5874}.letter small{color:#a58a8d;font-size:9px}.letter.hidden{color:#b8a9ae}.reward-list{margin:16px 0 0;display:grid;gap:9px}.reward-item{display:flex;justify-content:space-between;align-items:center;gap:8px;background:#fffaf8;border:1px solid #edd5da;border-radius:15px;padding:13px 16px;font-size:12px;color:#95727a}.reward-item strong{font-size:18px;color:#bd6481}.final-locked{padding:18px;text-align:center;font-size:15px;line-height:1.7;color:#927982}.final-open{padding:24px;text-align:center;background:linear-gradient(160deg,#ffefef,#fffcf8)}.final-open h2{color:#a75874}.modal{position:fixed;inset:0;background:#49334377;backdrop-filter:blur(5px);z-index:15;display:none;align-items:flex-end;justify-content:center}.modal.show{display:flex}.sheet{position:relative;width:100%;max-width:600px;max-height:94dvh;overflow:auto;background:linear-gradient(#fffdfa,#fff4f3);border-radius:28px 28px 0 0;padding:30px 21px calc(30px + env(safe-area-inset-bottom));box-shadow:0 -15px 50px #51354033}.sheet:before{content:"";position:absolute;top:10px;left:calc(50% - 24px);height:4px;width:48px;border-radius:8px;background:#edc9d0}.close{position:absolute;right:16px;top:18px;background:#f7e4e9;color:#995b71;border:0;border-radius:13px;width:40px;height:40px;font-size:26px}.sheet h2{margin-right:42px}.input{width:100%;border:1px solid #e5c3cc;background:#fff;border-radius:15px;min-height:55px;font-size:18px;padding:14px 16px;outline:none}.input:focus{border-color:#ce7994}.input-label{font-size:12px;font-weight:800;color:#a66f82;margin:15px 0 8px;display:block}.error{background:#fff0f2;border:1px solid #e9b9c6;border-radius:14px;padding:13px;margin-top:12px;color:#ab4f67;font-size:13px;line-height:1.5}.reward-pill{display:inline-block;background:#f2dce1;color:#a74a69;border-radius:14px;padding:9px 13px;font-weight:800;margin:8px 0}.bloom{font-size:44px;text-align:center;margin:18px 0}.footer-settings{margin-top:24px;padding:15px;color:#907981;font-size:12px;text-align:center}.footer-settings button{background:transparent;border:0;text-decoration:underline;color:#8f6d77}.toast{position:fixed;top:calc(84px + env(safe-area-inset-top));left:50%;transform:translateX(-50%);background:#784e65;color:white;padding:12px 18px;border-radius:14px;font-size:13px;z-index:30;max-width:90%;text-align:center;display:none}.toast.show{display:block}.confetti{position:fixed;inset:0;pointer-events:none;z-index:25;overflow:hidden}.confetti i{position:absolute;top:-20px;width:10px;height:15px;animation:fall 2s linear forwards}.sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}@keyframes fall{to{transform:translateY(120dvh) rotate(600deg);opacity:0}}@keyframes fade{from{opacity:.5;transform:translateY(7px)}to{opacity:1;transform:none}}@media(max-width:360px){h1{font-size:34px}.hero-flowers{height:145px}.head{padding-left:12px;padding-right:12px}.page{padding-left:12px;padding-right:12px}.card{padding:16px}}@media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+</style></head><body>
+<div class="app"><header class="head"><div class="brand"><div class="brand-logo">🌷</div><div><small>МОЙ МАЛЕНЬКИЙ СЕКРЕТ</small><strong>30 секретов для тебя</strong></div></div><div id="headStep" class="head-status">01 / 30</div></header>
+<main class="pages">
+<section id="page-home" class="page active"><div class="card hero">
+<div class="eyebrow">♡ НАША МАЛЕНЬКАЯ ИСТОРИЯ</div>
+<svg class="hero-flowers" viewBox="0 0 330 220" xmlns="http://www.w3.org/2000/svg" aria-label="Нарисованные тюльпаны">
+<defs><linearGradient id="petal" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#ffe3e6"/><stop offset="1" stop-color="#d57897"/></linearGradient></defs>
+<path d="M165 205 Q112 130 62 66 M166 205 Q145 130 125 50 M166 205 Q173 130 185 58 M165 205 Q217 120 264 66 M166 205 Q190 125 240 88" fill="none" stroke="#7e9b7e" stroke-width="5"/>
+<path d="M150 176Q105 133 85 143Q97 170 150 185 M176 169Q219 118 242 139Q215 169 177 190 M160 153Q119 107 100 115Q116 151 160 169" fill="#a2b89c"/>
+<g fill="url(#petal)" stroke="#d487a2" stroke-width="2">
+<path d="M62 68C42 56 40 28 49 22L64 41L76 21C94 29 85 58 62 68Z"/>
+<path d="M125 57C98 42 100 11 112 8L128 25L143 7C163 15 154 44 125 57Z"/>
+<path d="M185 65C158 53 156 21 168 16L186 35L202 16C223 25 213 56 185 65Z"/>
+<path d="M264 72C244 56 244 27 257 22L270 42L283 23C300 37 291 63 264 72Z"/>
+<path d="M240 93C220 80 218 49 231 45L242 62L256 45C272 58 266 82 240 93Z"/>
+</g><path d="M115 192 Q164 219 216 188 L209 219 H124 Z" fill="#f4d6c3"/><path d="M133 195 L194 201" stroke="#d5b29c" stroke-width="3"/></svg>
+<h1>30 секретов <em>для тебя</em></h1><p class="lead">Я приготовил для тебя маленькое приключение. Найди первую записку, введи код, отгадай загадку и отправляйся к следующему месту. По пути собирай буквы — они приведут к главному сюрпризу. ♡</p>
+<button class="btn" id="start">Начать приключение →</button></div>
+<div class="stats"><div class="card stat"><strong id="completedHome">0</strong><span>загадок пройдено</span></div><div class="card stat"><strong id="wrongHome">0</strong><span>лишних шагов</span></div></div>
+<div class="card"><div class="eyebrow">Твой путь</div><div class="progress"><div id="homeFill" class="fill"></div></div><div class="small" id="progressText">0 из 30</div><button class="btn secondary" id="continue">Продолжить квест</button></div></section>
+<section id="page-quests" class="page"><div class="heading"><div><div class="eyebrow">ЗАГАДКИ</div><h2>30 маленьких тайн</h2></div><div class="tag" id="progressTag">0/30</div></div>
+<div class="card"><div class="eyebrow">Текущий этап</div><h3 id="currentTitle">Тайна №01</h3><p class="lead" id="currentDesc">Найди бумажку с кодом.</p><button class="btn" id="openCurrent">Открыть загадку →</button></div>
+<div class="chapter-tabs" id="chapters"></div><div class="tile-grid" id="tiles"></div>
 </section>
-<section class="screen" data-screen="quests" id="screen-quests">
-<div class="screen-head">
-<div>
-<div class="mini-label">Загадки</div>
-<h2>30 маленьких тайн</h2>
-</div>
-<button class="ghost-btn" id="jumpCurrentBtn" type="button">К текущей</button>
-</div>
-<div class="soft-card current-quest-card" id="currentQuestCard"></div>
-<div aria-label="Главы квеста" class="chapter-picker" id="chapterPicker" role="tablist"></div>
-<div class="chapter-content" id="chapterContent"></div>
-</section>
-<section class="screen" data-screen="clues" id="screen-clues">
-<div class="screen-head">
-<div>
-<div class="mini-label">Буквы</div>
-<h2>Собираем тайную фразу</h2>
-</div>
-</div>
-<div class="soft-card info-card">
-          Собирай буквы за правильные ответы. Одна награда — это пробел. К 29-й загадке у тебя будут все 12 символов.
-        </div>
-<div class="stack-grid" id="clueGrid"></div>
-</section>
-
-<section class="screen" data-screen="path" id="screen-path">
-<div class="screen-head">
-<div>
-<div class="mini-label">Путь</div>
-<h2>Дорога к подарку</h2>
-</div>
-</div>
-<article class="soft-card route-card">
-<div class="route-top">
-<div>
-<span>Общий прогресс</span>
-<strong id="completeSmall">0 из 30</strong>
-</div>
-<div class="route-percent" id="routePercent">0%</div>
-</div>
-<div class="progress-track large"><div class="progress-fill" id="progressFillPath"></div></div>
-<div class="detour-visual">
-<div class="detour-line"><span class="detour-marker" id="detourMarker">♡</span><span class="detour-gift">🎁</span></div>
-<div class="detour-legend"><span>чем больше ошибок, тем длиннее путь</span><span>подарок ждёт в финале</span></div>
-</div>
-</article>
-<article class="soft-card" id="endingCard"><div aria-hidden="true" class="ending-art"><img alt="" src="assets/tulip-bouquet.svg"/></div>
-<div class="mini-label">Финал</div>
-<h3 id="endingHeadline">Финальный сюрприз ещё впереди</h3>
-<p id="finalMessage"></p>
-</article>
-<details class="reset-details"><summary>Настройки и повторное прохождение</summary><p>Если ты проверяешь квест, здесь можно очистить весь сохранённый прогресс на этом устройстве.</p><button class="reset-control" id="resetBtn" type="button">Начать всё сначала</button></details></section>
+<section id="page-letters" class="page"><div class="eyebrow">Буквы-подсказки</div><h2>Собери тайную фразу</h2><div class="card"><p class="lead">За некоторые правильные ответы ты получишь по одному символу. Восьмой символ — пробел между словами.</p><div class="letters" id="letters"></div><p class="small" id="letterProgress"></p></div><div id="rewardList" class="reward-list"></div></section>
+<section id="page-path" class="page"><div class="eyebrow">ДОРОГА К ПОДАРКУ</div><h2>Наш маленький путь</h2><div class="card"><div class="eyebrow">Прогресс</div><h3 id="pathProgress">0 из 30</h3><div class="progress"><div class="fill" id="pathFill"></div></div><p class="lead" id="pathExtra">Каждая разгаданная тайна приближает тебя к сюрпризу.</p></div><div id="finalCard" class="card final-locked">Финальный секрет появится здесь после всех 30 загадок. ♡</div><div class="footer-settings"><button id="reset">Начать всё сначала</button></div></section>
 </main>
-<nav aria-label="Основная навигация" class="tabbar" role="tablist">
-<button aria-selected="true" class="tabbar-item active" data-tab="home" role="tab" type="button"><span class="tab-icon"><svg aria-hidden="true" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="24"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"></path></svg></span><span>Главная</span></button>
-<button aria-selected="false" class="tabbar-item" data-tab="quests" role="tab" type="button"><span class="tab-icon"><svg aria-hidden="true" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="24"><rect height="18" rx="4" width="18" x="3" y="3"></rect><path d="m9 8 3-2 3 2M8.5 13h7m-7 4h4"></path></svg></span><span>Загадки</span></button>
-<button aria-selected="false" class="tabbar-item" data-tab="clues" role="tab" type="button"><span class="tab-icon"><svg aria-hidden="true" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="24"><path d="M4 5h16v14H4z"></path><path d="m4 6 8 7 8-7"></path></svg></span><span>Буквы</span></button>
-
-<button aria-selected="false" class="tabbar-item" data-tab="path" role="tab" type="button"><span class="tab-icon"><svg aria-hidden="true" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="24"><path d="M20.4 4.6a5.5 5.5 0 0 0-7.8 0L12 5.2l-.6-.6a5.5 5.5 0 0 0-7.8 7.8L12 21l8.4-8.6a5.5 5.5 0 0 0 0-7.8z"></path></svg></span><span>Путь</span></button>
-</nav>
-</div>
-<div class="modal-root" hidden="" id="modal">
-<div class="modal-backdrop" id="modalBackdrop"></div>
-<section aria-labelledby="modalTitle" aria-modal="true" class="modal-panel" id="modalPanel" role="dialog">
-<button aria-label="Закрыть" class="close-btn" id="modalClose">×</button>
-<div id="modalContent"></div>
-</section>
-</div>
-<div aria-hidden="true" class="confetti-layer" id="confettiLayer"></div>
-<script src="quest-data.js"></script>
-<script src="game.js"></script>
-</body>
-</html>
+<nav class="nav" aria-label="Разделы приложения"><button data-tab="home" class="active"><span class="nav-icon">⌂</span>Главная</button><button data-tab="quests"><span class="nav-icon">✧</span>Загадки</button><button data-tab="letters"><span class="nav-icon">✉</span>Буквы</button><button data-tab="path"><span class="nav-icon">♡</span>Путь</button></nav></div>
+<div class="modal" id="modal"><section class="sheet" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><button class="close" id="close" aria-label="Закрыть">×</button><div id="modalBody"></div></section></div><div class="confetti" id="confetti"></div><div class="toast" id="toast" role="status"></div>
+<script>
+const DATA=[{"place":"Каркас кровати","code":"7856","question":"У кровати есть основа: она держит матрас, но сама не мягкая. Найди её.","answers":["каркас кровати","каркас","основание кровати"],"reward":null},{"place":"Картина","code":"7417","question":"Я украшаю стену и храню изображение в рамке. Где искать дальше?","answers":["картина","картинка"],"reward":"В"},{"place":"Зеркало","code":"8506","question":"Посмотри в меня, и увидишь главную героиню этого приключения. Что я?","answers":["зеркало"],"reward":null},{"place":"Стеллаж","code":"6835","question":"Полка над полкой, всё аккуратно стоит в ряд. Как зовётся этот дом для вещей?","answers":["стеллаж","стелаж"],"reward":"Е"},{"place":"Лего","code":"2140","question":"Из маленьких цветных деталей можно построить дом, машину или целый город. Что это?","answers":["лего","lego"],"reward":null},{"place":"Пианино","code":"1103","question":"У меня белые и чёрные клавиши. Нажимай их — и зазвучит музыка. Что это?","answers":["пианино","фортепиано"],"reward":null},{"place":"Холодильник","code":"8808","question":"Я храню продукты в холоде и часто гудю на кухне. Что это?","answers":["холодильник"],"reward":"Р"},{"place":"Аквариум","code":"9597","question":"За прозрачными стенками у меня живёт маленький подводный мир. Что это?","answers":["аквариум"],"reward":null},{"place":"Черепаха","code":"5539","question":"Ношу домик на спине и люблю никуда не спешить. Кто я?","answers":["черепаха","черепашка"],"reward":"Х"},{"place":"Книги","code":"5852","question":"У них есть страницы, обложки и тысячи историй. Где искать дальше?","answers":["книги","книга"],"reward":null},{"place":"Монополия","code":"9541","question":"Здесь можно купить целую улицу, построить отель и потерять всё из-за кубика. Что за игра?","answers":["монополия","monopoly"],"reward":null},{"place":"Свадьба","code":"9382","question":"Вспомни день, когда мы сказали друг другу самое важное «да». Где найти напоминание о нём?","answers":["свадьба","наша свадьба"],"reward":"Н"},{"place":"Айпад","code":"3546","question":"Я больше телефона, но меньше ноутбука. Меня удобно держать на коленях и листать пальцем. Что я?","answers":["айпад","ipad","планшет"],"reward":null},{"place":"Колонки","code":"4295","question":"Они не играют сами, зато делают музыку и голоса громче. Что это?","answers":["колонки","колонка","динамики"],"reward":"И"},{"place":"Пауки","code":"7231","question":"У них восемь ног, а некоторые из них плетут паутину. Кто это?","answers":["пауки","паук"],"reward":null},{"place":"Тоторо","code":"6473","question":"Большой добрый лесной дух из японского мультфильма, с ушами и широкой улыбкой. Кто это?","answers":["тоторо","тотторо"],"reward":null},{"place":"Ноты","code":"5745","question":"На пяти линейках живут музыкальные значки. По ним можно сыграть мелодию. Что это?","answers":["ноты","нотная тетрадь"],"reward":"Й"},{"place":"Подушка","code":"5536","question":"Я мягкая, жду тебя в кровати и всю ночь поддерживаю голову. Что я?","answers":["подушка"],"reward":null},{"place":"Ноутбук","code":"2253","question":"Компьютер, который можно сложить пополам и взять с собой. Что это?","answers":["ноутбук","ноут"],"reward":" "},{"place":"Телефон","code":"9807","question":"Всегда почти под рукой: в нём звонки, сообщения и целый мир на экране. Что это?","answers":["телефон","смартфон"],"reward":null},{"place":"Фотографии","code":"8248","question":"Они сохраняют счастливые мгновения, чтобы мы могли смотреть на них снова. Что это?","answers":["фотографии","фото","фотография"],"reward":"Ш"},{"place":"Вилка","code":"2731","question":"У меня есть зубчики, но я не расчёска. Моя работа — помогать за столом. Что это?","answers":["вилка"],"reward":null},{"place":"Колокольчик","code":"2694","question":"Стоит меня качнуть или встряхнуть — и раздаётся звонкое «динь-динь». Что это?","answers":["колокольчик","колоколчик","звоночек"],"reward":null},{"place":"Турник","code":"9134","question":"Меня крепко хватают руками и подтягиваются вверх. Что это?","answers":["турник"],"reward":"К"},{"place":"Фуражка","code":"1660","question":"Головной убор с жёстким козырьком, который часто носят вместе с формой. Что это?","answers":["фуражка"],"reward":null},{"place":"Лампа","code":"5879","question":"Когда темно, одно нажатие — и я дарю свет. Что это?","answers":["лампа","светильник"],"reward":"А"},{"place":"Шапка","code":"3152","question":"Я грею голову в холодную погоду. Обычно я вязаная и без козырька. Что это?","answers":["шапка"],"reward":null},{"place":"Учёба","code":"3967","question":"Здесь бывают уроки, конспекты, задания и новые знания. С чем это связано?","answers":["учёба","учеба","занятия"],"reward":null},{"place":"Память","code":"9778","question":"Она хранит важные мгновения, даже когда годы проходят. Найди наше напоминание о прошлом. Что это?","answers":["память","воспоминания"],"reward":"Ф"},{"place":"Последняя разгадка","code":"2808","question":"Ты собрала 12 символов, и один из них — пробел. Составь из них два слова и напиши место, где ждёт подарок.","answers":["верхний шкаф"],"reward":null}];
+const REWARD_AT=[2,4,7,9,12,14,17,19,21,24,26,29];
+const SYMBOLS=["В","Е","Р","Х","Н","И","Й"," ","Ш","К","А","Ф"];
+const $=id=>document.getElementById(id);
+const key="secretlove-30-github-final-2026";
+let state={completed:0,unlocked:[],mistakes:0,detour:0};
+try{const saved=JSON.parse(localStorage.getItem(key));if(saved&&Number.isInteger(saved.completed)){state={...state,...saved};state.completed=Math.max(0,Math.min(30,state.completed));if(!Array.isArray(state.unlocked))state.unlocked=[];}}catch(e){}
+let chapter=Math.min(2,Math.floor(state.completed/10)),tab="home";
+const save=()=>{try{localStorage.setItem(key,JSON.stringify(state))}catch(e){}};
+const normal=s=>String(s||"").toLowerCase().replace(/ё/g,"е").trim().replace(/[\s\p{P}\p{S}]+/gu," ");
+const n=i=>String(i+1).padStart(2,"0");
+function switchTab(which){tab=which;document.querySelectorAll(".page").forEach(x=>x.classList.toggle("active",x.id==="page-"+which));document.querySelectorAll(".nav button").forEach(x=>x.classList.toggle("active",x.dataset.tab===which));$("page-"+which).scrollTop=0}
+function openModal(body){$("modalBody").innerHTML=body;$("modal").classList.add("show");$("modal").querySelector(".sheet").scrollTop=0}
+function closeModal(){$("modal").classList.remove("show");$("modalBody").innerHTML=""}
+function toast(msg){const el=$("toast");el.textContent=msg;el.classList.add("show");setTimeout(()=>el.classList.remove("show"),2400)}
+function celebrate(){const el=$("confetti"),palette=["#e59bb2","#ecce9d","#aac9a2","#f1bfcb"];for(let i=0;i<36;i++){const piece=document.createElement("i");piece.style.left=Math.random()*100+"%";piece.style.background=palette[i%4];piece.style.animationDuration=(1.8+Math.random()*1.8)+"s";el.append(piece);setTimeout(()=>piece.remove(),4000)}}
+function render(){
+ const c=state.completed,p=Math.round(c/30*100);
+ $("headStep").textContent=(c===30?"30":n(c))+" / 30";
+ $("completedHome").textContent=c;$("wrongHome").textContent=state.detour;
+ $("homeFill").style.width=p+"%";$("pathFill").style.width=p+"%";
+ $("progressText").textContent=c+" из 30 — "+p+"%";$("pathProgress").textContent=c+" из 30";
+ $("progressTag").textContent=c+"/30";$("currentTitle").textContent=c===30?"Все загадки пройдены!":"Тайна №"+n(c);
+ $("currentDesc").textContent=c===30?"Твой подарок уже ждёт тебя.":"Найди бумажку №"+(c+1)+" и введи четырёхзначный код.";
+ $("openCurrent").textContent=c===30?"Открыть финал":"Открыть загадку →";
+ $("pathExtra").textContent=state.detour?"Лишних шагов: "+state.detour+". Но ты всё равно идёшь к подарку.":"Каждая разгаданная тайна приближает тебя к сюрпризу.";
+ $("finalCard").className="card "+(c===30?"final-open":"final-locked");
+ $("finalCard").innerHTML=c===30?"<div class='bloom'>🎁 🌷</div><div class='eyebrow'>ТЫ СПРАВИЛАСЬ!</div><h2>Ты раскрыла все секреты!</h2><p class='lead'>Загляни в <strong>верхний шкаф</strong> — там тебя ждёт подарок. Люблю тебя! ♡</p>":"Финальный секрет появится здесь после всех 30 загадок. ♡";
+ $("chapters").innerHTML=["Наши первые находки","По следам воспоминаний","Близко к разгадке"].map((x,i)=>"<button data-ch='"+i+"' class='"+(chapter===i?"active":"")+"'><small>ГЛАВА 0"+(i+1)+"</small>"+x+"</button>").join("");
+ $("tiles").innerHTML=DATA.slice(chapter*10,chapter*10+10).map((x,i)=>{const j=chapter*10+i,status=j<c?"done":j===c?"current":"locked";return "<button class='tile "+status+"' data-step='"+j+"'><span class='num'>"+n(j)+"</span><span><span class='label'>Тайна "+n(j)+"</span><br><span class='hint'>"+(j<c?"Разгадана ♡":j===c?"Введи код":"Ждёт своего часа")+"</span></span></button>"}).join("");
+ $("letters").innerHTML=SYMBOLS.map((x,i)=>{const unlocked=c>=REWARD_AT[i];return "<div class='letter "+(unlocked?"":"hidden")+"'><span>"+(unlocked?(x===" "?"␣":x):"?")+"</span><small>"+(i+1)+"</small></div>"}).join("");
+ $("letterProgress").textContent="Открыто "+REWARD_AT.filter(x=>c>=x).length+" из 12 символов";
+ $("rewardList").innerHTML=REWARD_AT.map((r,i)=>"<div class='reward-item'><span>После загадки №"+r+"</span><strong>"+(c>=r?(SYMBOLS[i]===" "?"ПРОБЕЛ":SYMBOLS[i]):"♡")+"</strong></div>").join("");
+ document.querySelectorAll("[data-ch]").forEach(x=>x.onclick=()=>{chapter=Number(x.dataset.ch);render()});
+ document.querySelectorAll("[data-step]").forEach(x=>x.onclick=()=>openStep(Number(x.dataset.step)));
+}
+function openStep(i){
+ if(i>=30){switchTab("path");return}
+ if(i>state.completed){toast("Сначала разгадай текущую загадку ♡");return}
+ if(i<state.completed){toast("Эту тайну ты уже разгадала ♡");return}
+ if(state.unlocked.includes(i))question(i);else code(i)
+}
+function code(i){
+ openModal("<div class='eyebrow'>ТАЙНА "+n(i)+" / 30</div><div class='bloom'>🔐</div><h2 id='modalTitle'>Секретный код</h2><p class='lead'>Введи четыре цифры с найденной записки.</p><form id='codeForm'><label class='input-label' for='codeInput'>Код с бумажки</label><input id='codeInput' class='input' type='text' pattern='[0-9]{4}' inputmode='numeric' maxlength='4' autocomplete='off' placeholder='••••' required><div id='codeError'></div><button class='btn' type='submit'>Открыть загадку →</button></form>");
+ const input=$("codeInput");
+ input.oninput=()=>{input.value=input.value.replace(/\D/g,"").slice(0,4);if(input.value.length===4)check()};
+ function check(){if(input.value===DATA[i].code){state.unlocked.push(i);save();question(i)}else{$("codeError").innerHTML="<div class='error'>Этот код не подходит. Проверь цифры ♡</div>";input.value="";input.focus()}}
+ $("codeForm").onsubmit=e=>{e.preventDefault();check()};
+}
+function question(i){
+ const x=DATA[i];openModal("<div class='eyebrow'>ЗАГАДКА №"+n(i)+"</div><div class='bloom'>🌷</div><h2 id='modalTitle'>Маленькая тайна</h2><p class='lead'>"+x.question+"</p><form id='answerForm'><label class='input-label' for='answer'>Твой ответ</label><input class='input' id='answer' required maxlength='120' autocomplete='off' placeholder='Напиши здесь...'><div id='answerFeedback'></div><button class='btn' type='submit'>Проверить ответ ♡</button></form>");
+ $("answerForm").onsubmit=e=>{e.preventDefault();const entered=normal($("answer").value);
+ if(x.answers.some(a=>normal(a)===entered)){state.completed++;save();chapter=Math.min(2,Math.floor(state.completed/10));render();celebrate();success(i)}
+ else{state.mistakes++;state.detour+=30;save();render();$("answerFeedback").innerHTML="<div class='error'>Пока не угадала! Путь удлинился на 30 шагов, но ты обязательно найдёшь ответ. ♡</div>";$("answer").select();}
+ };
+}
+function success(i){
+ const x=DATA[i],hasReward=x.reward!==null;
+ const reward=hasReward?"<div class='reward-pill'>Твоя новая буква: "+(x.reward===" "?"ПРОБЕЛ":x.reward)+"</div>":"";
+ const title=state.completed===30?"ТЫ СПРАВИЛАСЬ!":"Верный ответ!";
+ const msg=state.completed===30?"Все 30 загадок пройдены. Ты нашла дорогу к подарку.":"Теперь отправляйся к предмету, который ты отгадала, и найди рядом следующую бумажку с кодом.";
+ openModal("<div class='eyebrow'>ЗАГАДКА №"+n(i)+" ПРОЙДЕНА</div><div class='bloom'>💗 🌷</div><h2 id='modalTitle'>"+title+"</h2><p class='lead'>"+msg+"</p>"+reward+"<p class='small'>Пройдено "+state.completed+" из 30.</p><button class='btn' id='nextBtn'>"+(state.completed===30?"Посмотреть финал":"Продолжить")+"</button>");
+ $("nextBtn").onclick=()=>{closeModal();switchTab(state.completed===30?"path":"quests")};
+}
+document.querySelectorAll(".nav button").forEach(x=>x.onclick=()=>switchTab(x.dataset.tab));
+$("close").onclick=closeModal;$("modal").onclick=e=>{if(e.target===$("modal"))closeModal()};
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeModal()});
+$("start").onclick=()=>{switchTab("quests");openStep(state.completed)};
+$("continue").onclick=()=>{switchTab(state.completed===30?"path":"quests");if(state.completed<30)openStep(state.completed)};
+$("openCurrent").onclick=()=>{if(state.completed===30)switchTab("path");else openStep(state.completed)};
+$("reset").onclick=()=>{if(confirm("Начать квест сначала? Весь прогресс на этом устройстве будет потерян.")){state={completed:0,unlocked:[],mistakes:0,detour:0};chapter=0;save();render();switchTab("home")}};
+render();
+if("serviceWorker" in navigator&&location.protocol==="https:"){window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{}))}
+</script></body></html>
